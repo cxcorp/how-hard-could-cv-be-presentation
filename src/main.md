@@ -151,19 +151,59 @@ Notes:
   - contours
 
 ---
+<!-- .slide: data-auto-animate -->
 
-### Building the thing
+### What do we need to do?
 
-1. Find if there's a code matrix in the image <!-- .element: class="fragment" -->
-2. Extract that image <!-- .element: class="fragment" -->
-3. Run OCR <!-- .element: class="fragment" -->
-4. ??? <!-- .element: class="fragment" -->
-5. Profit? <!-- .element: class="fragment" -->
+----
+<!-- .slide: data-auto-animate -->
+
+### What do we need to do?
+
+1. Locate code matrix in the image
+
+<img style="display:block; margin: 0 auto;" src="img/building-find-matrix.png" width="300px" />
+
+----
+<!-- .slide: data-auto-animate -->
+
+### What do we need to do?
+
+1. Locate code matrix in the image
+2. Turn the pixels into text
+
+<img style="display:block; margin: 0 auto;" src="img/building-ocr.png" width="300px" />
+
+----
+<!-- .slide: data-auto-animate -->
+
+### What do we need to do?
+
+1. Locate code matrix in the image
+2. Turn the pixels into text
+3. ???
+
+<img style="display:block; margin: 0 auto;" src="img/building-blank.png" width="300px" />
+
+----
+<!-- .slide: data-auto-animate -->
+
+### What do we need to do?
+
+1. Locate code matrix in the image <!-- .element: data-id="1-locate-code-matrix-in-the-image"  -->
+2. Turn the pixels into text
+3. ???
+4. Profit?
+
+<img style="display:block; margin: 0 auto;" src="img/building-cash.png" width="300px" />
 
 ---
 
-### Find and extract the matrix
+<!-- .slide: data-auto-animate -->
 
+1. **Locate code matrix in the image** <!-- .element: data-id="1-locate-code-matrix-in-the-image" -->
+
+<br/><br/>
 - It already looks like a grid
 - How do we find the coordinates of the grid?
 
@@ -302,19 +342,19 @@ Notes:
 </div>
 
 Notes:
+- It actually works so fast that it's real-time
 - Now we can show the user that we found the matrix
-- Makes it easier to position the camera
 
 ---
 
-### Building the thing
+<!-- .slide: data-auto-animate-->
 
-1. Find if there's a code matrix in the image <!-- .element: style="opacity: 0.2" -->
-2. Extract that image <!-- .element: style="opacity: 0.2" -->
-3. Run OCR
-4. ???
-5. Profit?
+### What do we need to do?
 
+1. Locate code matrix in the image
+2. Run OCR <!-- .element: style="opacity: 0.2" -->
+3. ??? <!-- .element: style="opacity: 0.2" -->
+4. Profit? <!-- .element: style="opacity: 0.2" -->
 
 ---
 
@@ -342,27 +382,18 @@ Notes:
   - can run directly in the browser
 
 ----
-
 <!-- .slide: data-auto-animate -->
 
 ### Helping Tesseract
 
-- Train the language model with the game's font <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-- Restrict possible characters <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-- Change "page modes" <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-
-<pre class="javascript"><code data-line-numbers="8">await tesseract.load();
-await tesseract.loadLanguage("eng_custom_font");
-await tesseract.initialize("eng_custom_font");
-await tesseract.setParameters({
-  tessedit_char_whitelist: " 1579ABDCEF",
-  tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
-});
-
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="">await tesseract.load();
+await tesseract.loadLanguage("eng");
+await tesseract.initialize("eng");
+await tesseract.recognize(image);
 </code></pre>
 
 Notes:
-- out of the box, tesseract is optimized for scanning book pages in a specific language
+- out of the box, tesseract is good for scanning book pages in a specific language
 
 ----
 
@@ -370,22 +401,36 @@ Notes:
 
 ### Helping Tesseract
 
+- Pre-process the image
+
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="">await tesseract.load();
+await tesseract.loadLanguage("eng");
+await tesseract.initialize("eng");
+await tesseract.recognize(image);
+</code></pre>
+
+Notes:
+- you have to preprocess the image, so remove noise and scanning artifacts, threshold the text
+- we already did this
+
+----
+
+<!-- .slide: data-auto-animate -->
+
+### Helping Tesseract
+
+- Pre-process the image <!-- .element: style="opacity: 0.2" -->
 - Train the language model with the game's font
-- Restrict possible characters <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-- Change "page modes" <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
 
-<pre class="javascript"><code data-line-numbers="2-3">await tesseract.load();
-await tesseract.loadLanguage("eng_custom_font");
-await tesseract.initialize("eng_custom_font");
-await tesseract.setParameters({
-  tessedit_char_whitelist: " 1579ABDCEF",
-  tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
-});
-
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="2-3">await tesseract.load();
+await tesseract.loadLanguage("eng_with_rajdhani_font");
+await tesseract.initialize("eng_with_rajdhani_font");
+await tesseract.recognize(image);
 </code></pre>
 
 Notes:
-- fine tune, we know the font you can train tesseract
+- I dug up the font used by the game
+- you can fine-tune Tesseract's language models to understand the font better
 
 ----
 
@@ -393,23 +438,22 @@ Notes:
 
 ### Helping Tesseract
 
-- Train the language model with the game's font <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
+- Pre-process the image <!-- .element: style="opacity: 0.2" -->
+- Train the language model with the game's font <!-- .element: style="opacity: 0.2" -->
 - Restrict possible characters
-- Change "page modes" <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
 
-<pre class="javascript"><code data-line-numbers="5">await tesseract.load();
-await tesseract.loadLanguage("eng_custom_font");
-await tesseract.initialize("eng_custom_font");
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="4-6">await tesseract.load();
+await tesseract.loadLanguage("eng_with_rajdhani_font");
+await tesseract.initialize("eng_with_rajdhani_font");
 await tesseract.setParameters({
-  tessedit_char_whitelist: " 1579ABDCEF",
-  tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
+  tessedit_char_whitelist: " 1579ABCDEF"
 });
-
+await tesseract.recognize(image);
 </code></pre>
 
 Notes:
-- **restrict:** we know euro symbols and Is aren't there
-- text modes: blocks, rows, columns, pages of text book
+- We know the minigame only uses specific hexadecimal characters
+- Euro symbol isn't there -> better use C instead
 
 ----
 
@@ -417,19 +461,85 @@ Notes:
 
 ### Helping Tesseract
 
-- Train the language model with the game's font <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-- Restrict possible characters <!-- .element: style="opacity: 0.2; transition-duration: 250ms !important" -->
-- Change "page modes"
+- Pre-process the image <!-- .element: style="opacity: 0.2" -->
+- Train the language model with the game's font <!-- .element: style="opacity: 0.2" -->
+- Restrict possible characters <!-- .element: style="opacity: 0.2" -->
+- Change "Page Segmentation Modes"
 
-<pre class="javascript"><code data-line-numbers="6">await tesseract.load();
-await tesseract.loadLanguage("eng_custom_font");
-await tesseract.initialize("eng_custom_font");
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="4,6-7">await tesseract.load();
+await tesseract.loadLanguage("eng_with_rajdhani_font");
+await tesseract.initialize("eng_with_rajdhani_font");
 await tesseract.setParameters({
-  tessedit_char_whitelist: " 1579ABDCEF",
+  tessedit_char_whitelist: " 1579ABCDEF",
   tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
 });
-
+await tesseract.recognize(image);
 </code></pre>
 
 Notes:
-- text modes: blocks, rows, columns, pages of text book
+- page segmentation modes, tell tesseract what the text content is
+  - single row of text
+  - entire page of text
+  - individual characters
+  - block of text with no order
+
+----
+
+
+<!-- .slide: data-auto-animate -->
+
+### Helping Tesseract
+
+- Pre-process the image
+- Train the language model with the game's font
+- Restrict possible characters
+- Change "Page Segmentation Modes"
+
+<pre class="javascript" data-id="help-tesseract-code-js"><code data-line-numbers="2-7">await tesseract.load();
+await tesseract.loadLanguage("eng_with_rajdhani_font");
+await tesseract.initialize("eng_with_rajdhani_font");
+await tesseract.setParameters({
+  tessedit_char_whitelist: " 1579ABCDEF",
+  tessedit_pageseg_mode: PSM.SINGLE_BLOCK,
+});
+await tesseract.recognize(image);
+</code></pre>
+
+Notes:
+- with all of this combined...
+
+----
+
+<!-- .slide: data-background-color="#fff" -->
+
+<iframe src="http://localhost:3005/index_after.html" width="960px" height="700px"></iframe>
+
+Notes:
+- even if E9 gets detected as E, the E character is only used in E9 so it's ok
+- besides, Tesseract gives us confidence values
+  - slice out only that word or column
+  - try with a different page segmentation mode
+
+---
+
+### All together now
+
+<img data-src="img/demo-ocr.gif" height="500px" />
+
+----
+
+<!-- .slide: data-auto-animate -->
+
+#### Bonus for PC players: in stores now
+[cyberpunk-hacker.com](https://cyberpunk-hacker.com/)
+
+![](img/cyberpunk_puzzle.jpg)
+
+----
+
+<!-- .slide: data-auto-animate -->
+
+#### Bonus for PC players: in stores now
+[cyberpunk-hacker.com](https://cyberpunk-hacker.com/)
+
+<iframe src="https://cyberpunk-hacker.com/" width="960px" height="700px"></iframe>
