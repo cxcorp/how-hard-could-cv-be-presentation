@@ -550,3 +550,12 @@ Notes:
 Notes:
 - press **ESC** for overview
 - *questions or thoughts?*
+
+
+---
+
+### How was this presentation made?
+
+- <!-- .element: style="list-style: none" --> <img style="margin:0 0.5em; margin-left: -1em;" src="img/github.png" width="24px" height="24px" /> <a target="_blank" href="https://github.com/cxcorp/how-hard-could-cv-be-presentation/blob/master/presentation/src/main.md?plain=1" rel="noreferrer noopener">cxcorp/how-hard-could-cv-be-presentation</a>
+- <!-- .element: style="list-style: none" --> <img style="margin:0 0.5em; margin-left: -1em;" src="img/github.png" width="24px" height="24px" /> <a target="_blank" href="https://github.com/webpro/reveal-md" rel="noreferrer noopener">webpro/reveal-md</a>
+  - [reveal.js](https://revealjs.com/)
