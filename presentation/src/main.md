@@ -64,7 +64,7 @@ Notes:
 
 ----
 
-<iframe src="https://cyberpunk-hacker.com" width="960px" height="700px"></iframe>
+<iframe loading="lazy" src="https://cyberpunk-hacker.com" width="960px" height="700px"></iframe>
 
 Notes:
 
@@ -139,7 +139,7 @@ Notes:
 
 ### Great documentation!
 
-<iframe src="https://docs.opencv.org/4.6.0/d5/d10/tutorial_js_root.html" width="960px" height="700px"></iframe>
+<iframe loading="lazy" src="https://docs.opencv.org/4.6.0/d5/d10/tutorial_js_root.html" width="960px" height="700px"></iframe>
 
 Notes:
 - The documentation is surprisingly good
@@ -373,7 +373,7 @@ OCR: optical character recognition
 
 <!-- .slide: data-background-color="#fff" -->
 
-<iframe src="http://localhost:3005/" width="960px" height="700px"></iframe>
+<iframe loading="lazy" src="http://localhost:3005/" width="960px" height="700px"></iframe>
 
 Notes:
 - one of the many libraries is Tesseract
@@ -512,7 +512,7 @@ Notes:
 
 <!-- .slide: data-background-color="#fff" -->
 
-<iframe src="http://localhost:3005/index_after.html" width="960px" height="700px"></iframe>
+<iframe loading="lazy" src="http://localhost:3005/index_after.html" width="960px" height="700px"></iframe>
 
 Notes:
 - even if E9 gets detected as E, the E character is only used in E9 so it's ok
@@ -542,4 +542,8 @@ Notes:
 #### Bonus for PC players: in stores now
 [cyberpunk-hacker.com](https://cyberpunk-hacker.com/)
 
-<iframe src="https://cyberpunk-hacker.com/" width="960px" height="700px"></iframe>
+<iframe loading="lazy" src="https://cyberpunk-hacker.com/" width="960px" height="700px"></iframe>
+
+Notes:
+- press **ESC** for overview
+- *questions or thoughts?*
