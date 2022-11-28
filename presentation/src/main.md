@@ -69,27 +69,20 @@ Notes:
 Notes:
 
 - So I made this website, you could write the matrix there and it would solve it for you
+    ```
+    7A 55 E9 E9 1C 55
+    55 7A 1C 7A E9 55
+    55 1C 1C 55 E9 BD
+    BD 1C 7A 1C 55 BD
+    BD 55 BD 7A 1C 1C
+    1C 55 55 7A 55 7A
+    ```
+    ```
+    BD E9 1C
+    BD 7A BD
+    BD 1C BD 55
+    ```
 
-```
-7A 55 E9 E9 1C 55
-55 7A 1C 7A E9 55
-55 1C 1C 55 E9 BD
-BD 1C 7A 1C 55 BD
-BD 55 BD 7A 1C 1C
-1C 55 55 7A 55 7A
-```
-
-```
-BD E9 1C
-BD 7A BD
-BD 1C BD 55
-```
-
-----
-
-![](img/solved.png) <!-- .element: class="r-stretch" -->
-
-Notes:
 - and this was cool for a while
 - but then I got tired of writing out the matrix
 
@@ -185,7 +178,7 @@ Notes:
 
 <img style="display:block; margin: 0 auto;" src="img/building-blank.png" width="300px" />
 
-----
+---
 <!-- .slide: data-auto-animate -->
 
 ### What do we need to do?
@@ -197,7 +190,7 @@ Notes:
 
 <img style="display:block; margin: 0 auto;" src="img/building-cash.png" width="300px" />
 
----
+----
 
 <!-- .slide: data-auto-animate -->
 
@@ -347,23 +340,30 @@ Notes:
 
 ---
 
-<!-- .slide: data-auto-animate-->
+<!-- .slide: data-auto-animate -->
 
 ### What do we need to do?
 
 1. Locate code matrix in the image
-2. Run OCR <!-- .element: style="opacity: 0.2" -->
+2. Turn the pixels into text <!-- .element: data-id="2-turn-the-pixels-into-text" -->
 3. ??? <!-- .element: style="opacity: 0.2" -->
 4. Profit? <!-- .element: style="opacity: 0.2" -->
 
 ---
 
+<!-- .slide: data-auto-animate -->
 
-### OCR
+2. **Turn the pixels into text** <!-- .element: style="transition-duration: 250ms !important" data-id="2-turn-the-pixels-into-text"  -->
+
+----
+
+<!-- .slide: data-auto-animate -->
 
 <!-- .slide: data-background-color="#fff" -->
 
-<iframe src="https://en.wikipedia.org/wiki/Optical_character_recognition" width="960px" height="700px"></iframe>
+2. **Turn the pixels into text** <!-- .element: style="transition-duration: 250ms !important" data-id="2-turn-the-pixels-into-text"  -->
+
+<iframe loading="lazy" src="https://en.wikipedia.org/wiki/Optical_character_recognition" width="960px" height="500px"></iframe>
 
 Notes:
 OCR: optical character recognition
@@ -534,6 +534,9 @@ Notes:
 [cyberpunk-hacker.com](https://cyberpunk-hacker.com/)
 
 ![](img/cyberpunk_puzzle.jpg)
+
+Notes:
+- if you play on PC, I've published a version that solves the puzzle from **screenshots**
 
 ----
 
