@@ -551,6 +551,9 @@ Notes:
 - press **ESC** for overview
 - *questions or thoughts?*
 
+---
+
+<video data-autoplay inline muted width="960px" height="700px" src="video/thank.mov" />
 
 ---
 
