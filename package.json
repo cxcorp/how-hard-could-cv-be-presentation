@@ -4,9 +4,11 @@
   "description": "",
   "main": "tesseract.js",
   "scripts": {
-    "start": "concurrently npm:serve:*",
-    "serve:presentation": "npm run --prefix presentation watch",
-    "serve:tesseract-docs": "serve -l tcp://localhost:3005 tesseract.js"
+    "start": "concurrently npm:start:*",
+    "watch": "concurrently npm:watch:presentation npm:start:tesseract-docs",
+    "watch:presentation": "npm run --prefix presentation watch",
+    "start:presentation": "npm run --prefix presentation start",
+    "start:tesseract-docs": "serve -l tcp://localhost:3005 tesseract.js"
   },
   "keywords": [],
   "author": "",
