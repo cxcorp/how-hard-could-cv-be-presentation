@@ -1,0 +1,16 @@
+{
+  "name": "how-hard-could-cv-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "reveal-md --theme black --highlight-theme atom-one-dark src/main.md",
+    "watch": "npm run start -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "not licensed",
+  "dependencies": {
+    "reveal-md": "5.3.4"
+  }
+}

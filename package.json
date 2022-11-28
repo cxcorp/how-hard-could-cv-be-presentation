@@ -1,16 +1,18 @@
 {
-  "name": "how-hard-could-cv-be",
+  "name": "how-hard-could-cv-be-presentation",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "tesseract.js",
   "scripts": {
-    "start": "reveal-md --theme black --highlight-theme atom-one-dark src/main.md",
-    "watch": "npm run start -- --watch"
+    "start": "concurrently npm:serve:*",
+    "serve:presentation": "npm run --prefix presentation watch",
+    "serve:tesseract-docs": "serve -l tcp://localhost:3005 tesseract.js"
   },
   "keywords": [],
   "author": "",
-  "license": "not licensed",
+  "license": "ISC",
   "dependencies": {
-    "reveal-md": "5.3.4"
+    "concurrently": "^7.6.0",
+    "serve": "^14.1.2"
   }
 }
